@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Lakshmi Krishna S, M.Sc. Data Science graduate: machine learning, fraud detection, air quality forecasting and generative AI.">
+<title>Lakshmi Krishna S</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;600;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a deep pine band opens and closes the page (graph-paper hero, gold accent),
+   with light ruled sections in between. All sections share one 5/7 column grid. */
+:root {
+  --bg: #F5F8F8;
+  --surface: #FFFFFF;
+  --ink: #10222A;
+  --muted: #52646B;
+  --line: #D8E1E3;
+  --accent: #9A5608;
+  --on-accent: #FFFFFF;
+  --tag-bg: #E8EFEF;
+  --tag-ink: #1D3A40;
+
+  --hero-bg: #0D2B2B;
+  --hero-ink: #F1F6F5;
+  --hero-muted: #A9BEBE;
+  --hero-accent: #F4B942;
+  --hero-on-accent: #0D2B2B;
+  --hero-line: rgba(241, 246, 245, 0.16);
+  --hero-grid: rgba(241, 246, 245, 0.06);
+  --hero-glow: rgba(244, 185, 66, 0.14);
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1316;
+    --surface: #101C20;
+    --ink: #E6EEEE;
+    --muted: #93A5A9;
+    --line: #21343A;
+    --accent: #F4B942;
+    --on-accent: #0D2B2B;
+    --tag-bg: #16282D;
+    --tag-ink: #C9D9DB;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A1316;
+  --surface: #101C20;
+  --ink: #E6EEEE;
+  --muted: #93A5A9;
+  --line: #21343A;
+  --accent: #F4B942;
+  --on-accent: #0D2B2B;
+  --tag-bg: #16282D;
+  --tag-ink: #C9D9DB;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 16px/1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--hero-bg);
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.on-dark :focus-visible { outline-color: var(--hero-accent); }
+
+.wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Shared small type */
+.label, .meta, .spec dt, .skills dt, .when, .eyebrow, .mark {
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.label { font-size: 0.72rem; font-weight: 500; color: var(--muted); margin: 0; }
+
+/* Dark bands: hero, contact, footer */
+.on-dark { color: var(--hero-ink); }
+.on-dark .btn { border-color: var(--hero-line); color: var(--hero-ink); }
+.on-dark .btn:hover { background: var(--hero-ink); color: var(--hero-bg); }
+.on-dark .btn.primary { background: var(--hero-accent); border-color: var(--hero-accent); color: var(--hero-on-accent); }
+.on-dark .btn.primary:hover { background: var(--hero-accent); color: var(--hero-on-accent); filter: brightness(1.08); }
+
+/* Hero */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--hero-bg);
+  padding-bottom: 96px;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -25%;
+  right: -8%;
+  width: min(640px, 70%);
+  max-width: 100%;
+  aspect-ratio: 1;
+  background: radial-gradient(closest-side, var(--hero-glow), transparent);
+  pointer-events: none;
+}
+.top { padding-block: 22px; }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.mark {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--hero-line);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--hero-accent);
+}
+.top nav ul { display: flex; flex-wrap: wrap; gap: 6px 22px; list-style: none; margin: 0; padding: 0; }
+.top nav a { color: var(--hero-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+.top nav a:hover { color: var(--hero-ink); }
+
+.hero-body { padding-top: 72px; }
+.eyebrow { font-size: 0.75rem; font-weight: 500; color: var(--hero-accent); margin: 0 0 20px; }
+h1 {
+  font: 700 clamp(2.9rem, 8.5vw, 5.5rem)/1 var(--font-display);
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  text-wrap: balance;
+  color: var(--hero-ink);
+}
+.gold-rule { width: 72px; height: 3px; background: var(--hero-accent); margin: 0 0 28px; }
+.lead { font-size: clamp(1.1rem, 2.2vw, 1.3rem); line-height: 1.6; max-width: 36em; margin: 0 0 24px; color: var(--hero-ink); }
+.status {
+  font: 400 0.8125rem/1.5 var(--font-mono);
+  color: var(--hero-muted);
+  margin: 0 0 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+.status span + span::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 12px;
+  border-radius: 50%;
+  background: var(--hero-accent);
+  vertical-align: middle;
+}
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 4px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font: 600 0.9375rem var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Sections */
+section.block { padding-block: 80px; }
+section.block.alt { background: var(--surface); border-block: 1px solid var(--line); }
+section.block.on-dark { background: var(--hero-bg); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 16px 48px; margin-bottom: 28px; align-items: end; }
+.sec-head h2 {
+  font: 600 clamp(2rem, 4vw, 2.9rem)/1.08 var(--font-display);
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+.sec-head p { margin: 0; color: var(--muted); max-width: 46ch; }
+.on-dark .sec-head p { color: var(--hero-muted); }
+.sec-head.about { align-items: start; margin-bottom: 0; }
+.sec-head p.about-text { color: var(--ink); font-size: clamp(1.05rem, 1.8vw, 1.2rem); line-height: 1.6; max-width: 52ch; }
+.sublabel { margin: 40px 0 8px; }
+
+/* Project rows */
+.proj {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 20px 48px;
+  padding-block: 36px;
+  border-top: 1px solid var(--line);
+}
+.projects .proj:last-child { border-bottom: 1px solid var(--line); }
+.meta { font-size: 0.72rem; font-weight: 500; color: var(--muted); margin: 0 0 12px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.proj h3 {
+  font: 600 clamp(1.4rem, 2.6vw, 1.8rem)/1.2 var(--font-display);
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+.proj .desc { margin: 0 0 20px; max-width: 60ch; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+}
+.chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+dl.spec, dl.skills { margin: 0; }
+.spec > div { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 4px 16px; padding-block: 10px; border-top: 1px solid var(--line); }
+.spec dt { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); padding-top: 4px; }
+.spec dd, .skills dd { margin: 0; }
+
+/* Experience and education rows */
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 8px 48px;
+  padding-block: 24px;
+  border-top: 1px solid var(--line);
+}
+.rows li:last-child { border-bottom: 1px solid var(--line); }
+.when { font-size: 0.8rem; letter-spacing: 0.06em; color: var(--muted); padding-top: 5px; }
+.role { font: 600 1.25rem/1.25 var(--font-display); margin: 0 0 2px; }
+.org { color: var(--muted); margin: 0 0 8px; }
+.rows .txt { margin: 0; max-width: 60ch; }
+
+/* Skills as tags */
+.skills > div {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 10px 48px;
+  padding-block: 20px;
+  border-top: 1px solid var(--line);
+}
+.skills > div:last-child { border-bottom: 1px solid var(--line); }
+.skills dt { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); padding-top: 5px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags span { background: var(--tag-bg); color: var(--tag-ink); border-radius: 999px; padding: 3px 13px; font-size: 0.875rem; line-height: 1.55; }
+
+/* Contact */
+.email {
+  display: inline-block;
+  font: 600 clamp(1.35rem, 4.6vw, 2.6rem)/1.15 var(--font-display);
+  letter-spacing: -0.01em;
+  color: var(--hero-ink);
+  text-decoration-color: var(--hero-accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  overflow-wrap: anywhere;
+  margin-bottom: 24px;
+}
+.copy-status { margin: 12px 0 0; min-height: 1.5em; font-size: 0.85rem; color: var(--hero-muted); }
+footer {
+  background: var(--hero-bg);
+  color: var(--hero-muted);
+  border-top: 1px solid var(--hero-line);
+  padding-block: 28px 44px;
+  font: 400 0.8125rem/1.5 var(--font-mono);
+}
+
+@media (max-width: 880px) {
+  .sec-head, .proj, .rows li, .skills > div { grid-template-columns: minmax(0, 1fr); }
+  .hero { padding-bottom: 64px; }
+  .hero-body { padding-top: 48px; }
+  .proj { gap: 16px; padding-block: 28px; }
+  .rows li, .skills > div { gap: 6px; }
+  section.block { padding-block: 60px; }
+}
+@media (max-width: 520px) {
+  .spec > div { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="hero on-dark" id="top">
+  <header class="top">
+    <div class="wrap">
+      <span class="mark" aria-label="Lakshmi Krishna S">LK</span>
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap hero-body">
+    <p class="eyebrow">Data science · Machine learning · Generative AI</p>
+    <h1>Lakshmi Krishna S</h1>
+    <div class="gold-rule" aria-hidden="true"></div>
+    <p class="lead">I build predictive models that explain their own decisions. My work covers air quality forecasting, fraud detection and medical image classification, and I'm now building applications on top of large language models.</p>
+    <p class="status">
+      <span>M.Sc. Data Science, Christ University, 2026</span>
+      <span>Open to data science and ML roles</span>
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#work">See selected work</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="sec-head about">
+        <h2>About</h2>
+        <p class="about-text">I'm an M.Sc. Data Science graduate from Christ University, with a B.Sc. in Mathematics. My internships had me forecasting air quality, detecting supply chain fraud and presenting the results in SAP Analytics Cloud dashboards. I care most about models people can understand, so I pair them with explainability tools like SHAP and feature-importance analysis. Right now I'm building LLM-powered applications, including a retrieval-augmented generation system, and I'm looking for a data science or ML role.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Selected work</h2>
+        <p>Two internship projects, three academic and research projects, and one in progress.</p>
+      </div>
+
+      <div class="projects">
+        <article class="proj">
+          <div>
+            <p class="meta"><span>Internship</span><span>Jan – Apr 2026</span></p>
+            <h3>Fraud detection for supply chain transactions</h3>
+          </div>
+          <div>
+            <p class="desc">I added a machine learning layer to a rule-based fraud approach, then used feature importance and root-cause analysis to find what drives fraud risk.</p>
+            <dl class="spec">
+              <div><dt>Data</dt><dd>180,519 real supply chain transactions</dd></div>
+              <div><dt>Result</dt><dd>Detection accuracy improved by 10.5% over rule-based methods alone</dd></div>
+              <div><dt>Key driver</dt><dd>Late delivery, at 64.52% feature importance</dd></div>
+              <div><dt>Delivery</dt><dd>3 SAP Analytics Cloud dashboards on fraud intelligence and model validation, across 5 global market regions</dd></div>
+              <div><dt>Credential</dt><dd>SAP Business Data Cloud certification, SAP Experience Academy</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div>
+            <p class="meta"><span>Internship</span><span>Feb – May 2026</span></p>
+            <h3>PM2.5 dispersion forecasting and hotspot detection</h3>
+          </div>
+          <div>
+            <p class="desc">Forecasting and hotspot detection for air quality, built within CLIICXNET's SPICE Six Intelligence Engines framework.</p>
+            <dl class="spec">
+              <div><dt>Task</dt><dd>PM2.5 dispersion forecasting</dd></div>
+              <div><dt>Method</dt><dd>Gradient Boosting</dd></div>
+              <div><dt>Explainability</dt><dd>SHAP, used to identify the key drivers of air quality</dd></div>
+              <div><dt>Also built</dt><dd>Pollution hotspot detection algorithms</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div>
+            <p class="meta"><span>Project</span><span>Deep learning</span></p>
+            <h3>Skin cancer and brain tumor image classification</h3>
+          </div>
+          <div>
+            <p class="desc">Convolutional neural networks for medical image classification, optimized with transfer learning and data augmentation for healthcare analytics.</p>
+            <dl class="spec">
+              <div><dt>Task</dt><dd>Image classification for skin cancer and brain tumor prediction</dd></div>
+              <div><dt>Models</dt><dd>Custom CNNs, plus transfer learning from VGG16 and EfficientNet</dd></div>
+              <div><dt>Techniques</dt><dd>Data augmentation</dd></div>
+              <div><dt>Tools</dt><dd>PyTorch</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div>
+            <p class="meta"><span>Project</span><span>Classification</span></p>
+            <h3>Hepatitis C stage prediction</h3>
+          </div>
+          <div>
+            <p class="desc">A comparison of classification algorithms for diagnosing Hepatitis C and predicting disease stages.</p>
+            <dl class="spec">
+              <div><dt>Models</dt><dd>Random Forest, Support Vector Classifier, Logistic Regression</dd></div>
+              <div><dt>Class imbalance</dt><dd>Handled with SMOTE preprocessing</dd></div>
+              <div><dt>Tools</dt><dd>Python, scikit-learn</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div>
+            <p class="meta"><span>Research</span><span>Mathematical modeling</span></p>
+            <h3>Hesitant fuzzy logic for decision-making</h3>
+          </div>
+          <div>
+            <p class="desc">Algorithms for complex decision-making in AI applications, built on hesitant fuzzy logic and polynomial algebra.</p>
+            <dl class="spec">
+              <div><dt>Area</dt><dd>Algorithm development and mathematical modeling</dd></div>
+              <div><dt>Validation</dt><dd>Real-world case studies</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div>
+            <p class="meta"><span class="chip">In progress</span><span>Generative AI</span></p>
+            <h3>Retrieval-Augmented Generation system</h3>
+          </div>
+          <div>
+            <p class="desc">An LLM-powered application that uses retrieval-augmented generation to ground answers in source documents.</p>
+            <dl class="spec">
+              <div><dt>Status</dt><dd>Currently building</dd></div>
+              <div><dt>Working with</dt><dd>LLM APIs, embeddings, vector databases (FAISS / ChromaDB), LangChain</dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Experience</h2>
+        <p>Most recent first.</p>
+      </div>
+      <ol class="rows">
+        <li>
+          <div class="when">Feb – May 2026</div>
+          <div>
+            <h3 class="role">AI/ML Intern, AQI &amp; Environmental Intelligence</h3>
+            <p class="org">CLIICXNET India Pvt. Ltd., Pune</p>
+            <p class="txt">Built Gradient Boosting forecasts for PM2.5 dispersion and pollution hotspot detection, and applied SHAP to find the key drivers of air quality.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">Jan – Apr 2026</div>
+          <div>
+            <h3 class="role">SAP Business Data Cloud Intern</h3>
+            <p class="org">Christ University, Bangalore</p>
+            <p class="txt">Built a fraud-detection layer on 180,519 supply chain transactions and delivered 3 SAP Analytics Cloud dashboards across 5 global market regions.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">May 2025</div>
+          <div>
+            <h3 class="role">AI Engineer Intern / Data Analytics Trainee</h3>
+            <p class="org">MedTourEasy, Remote</p>
+            <p class="txt">Ran exploratory data analysis and predictive modeling with Pandas, NumPy and Matplotlib. Built data ingestion and feature engineering workflows on large datasets, working across teams in an agile environment.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">April 2023</div>
+          <div>
+            <h3 class="role">Research &amp; Development Intern</h3>
+            <p class="org">IIT Palakkad Technology iHub Foundation, Palakkad</p>
+            <p class="txt">Completed hands-on training in fabrication lab tools, prototyping methods and applied engineering concepts.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block alt" id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Skills</h2>
+        <p>Grouped by the kind of work they support.</p>
+      </div>
+      <dl class="skills">
+        <div>
+          <dt>Programming</dt>
+          <dd class="tags"><span>Python</span><span>SQL</span><span>R</span><span>PySpark</span><span>Data structures</span><span>Algorithms</span></dd>
+        </div>
+        <div>
+          <dt>Statistics</dt>
+          <dd class="tags"><span>Linear regression</span><span>Statistical inference</span><span>Hypothesis testing</span><span>Time series</span><span>Economic statistics</span></dd>
+        </div>
+        <div>
+          <dt>Machine learning</dt>
+          <dd class="tags"><span>Gradient Boosting</span><span>Supervised learning</span><span>Unsupervised learning</span><span>Deep learning</span><span>CNN</span><span>RNN</span><span>LSTM</span><span>Transfer learning</span><span>AutoML (TPOT)</span><span>Hyperparameter tuning</span><span>Explainable AI (SHAP)</span><span>Anomaly and fraud detection</span><span>Forecasting</span></dd>
+        </div>
+        <div>
+          <dt>NLP and generative AI</dt>
+          <dd class="tags"><span>Transformers</span><span>BERT</span><span>DistilBERT</span><span>Hugging Face</span><span>Retrieval-augmented generation</span><span>LLM APIs</span><span>Prompt engineering</span><span>Embeddings</span><span>FAISS / ChromaDB</span><span>LangChain</span></dd>
+        </div>
+        <div>
+          <dt>Libraries and frameworks</dt>
+          <dd class="tags"><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span><span>FastAPI</span><span>Streamlit</span></dd>
+        </div>
+        <div>
+          <dt>Platforms and data</dt>
+          <dd class="tags"><span>SAP Business Data Cloud</span><span>SAP Databricks</span><span>SAP Analytics Cloud</span><span>AWS</span><span>Git</span><span>Excel</span><span>MySQL</span><span>MongoDB</span><span>Qiskit</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Education and certifications</h2>
+        <p>Mathematics first, then data science.</p>
+      </div>
+
+      <h3 class="label sublabel">Education</h3>
+      <ol class="rows">
+        <li>
+          <div class="when">July 2024 – April 2026</div>
+          <div>
+            <h3 class="role">M.Sc. in Data Science, Computer Science focus</h3>
+            <p class="org" style="margin:0">Christ University, Bangalore</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">Nov 2021 – April 2024</div>
+          <div>
+            <h3 class="role">B.Sc. in Mathematics</h3>
+            <p class="org" style="margin:0">Vimala College (Calicut University), Kerala</p>
+          </div>
+        </li>
+      </ol>
+
+      <h3 class="label sublabel">Certifications</h3>
+      <ol class="rows">
+        <li>
+          <div class="when">SAP Experience Academy · Feb 2026</div>
+          <div><h3 class="role" style="margin:0">SAP Certified: Introducing SAP Business Data Cloud</h3></div>
+        </li>
+        <li>
+          <div class="when">Infosys</div>
+          <div><h3 class="role" style="margin:0">Applied Generative AI &amp; Prompt Engineering</h3></div>
+        </li>
+        <li>
+          <div class="when">Coursera</div>
+          <div><h3 class="role" style="margin:0">Google Data Analytics Professional Certificate</h3></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block on-dark" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Contact</h2>
+        <p>Open to data science and ML roles. Email is the quickest way to reach me.</p>
+      </div>
+      <a class="email" id="email" href="mailto:lakshmikrishnas222@gmail.com">lakshmikrishnas222@gmail.com</a>
+      <div class="cta">
+        <button class="btn primary" type="button" id="copy-email">Copy email</button>
+        <a class="btn" href="https://www.linkedin.com/in/lakshmi-krishna-s-05951732b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/LakshmikrishnaS" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="on-dark">
+  <div class="wrap">Lakshmi Krishna S · Data science and machine learning · 2026</div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var addr = document.getElementById('email');
+  var status = document.getElementById('copy-status');
+  if (!btn || !addr || !status) return;
+
+  function selectAddress() {
+    try {
+      var range = document.createRange();
+      range.selectNodeContents(addr);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      status.textContent = 'Address selected. Use your device’s copy command.';
+    } catch (e) {
+      status.textContent = 'Copy is unavailable here. Select the address above.';
+    }
+  }
+
+  btn.addEventListener('click', function () {
+    var text = addr.textContent.trim();
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied';
+          status.textContent = 'Email address copied.';
+          setTimeout(function () { btn.textContent = 'Copy email'; status.textContent = ''; }, 2000);
+        }, selectAddress);
+      } else {
+        selectAddress();
+      }
+    } catch (e) {
+      selectAddress();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
